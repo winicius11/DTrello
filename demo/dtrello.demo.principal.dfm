@@ -23,9 +23,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Align = alLeft
     Caption = 'Organizations'
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitHeight = 416
     object grdpnl_organization: TGridPanel
       Left = 2
       Top = 15
@@ -69,7 +66,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
           Value = 50.000000000000000000
         end>
       TabOrder = 0
-      ExplicitWidth = 181
       object btn_active_org: TButton
         AlignWithMargins = True
         Left = 1
@@ -84,10 +80,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Active'
         TabOrder = 0
         OnClick = btn_active_orgClick
-        ExplicitLeft = 72
-        ExplicitTop = 16
-        ExplicitWidth = 75
-        ExplicitHeight = 25
       end
       object btn_insert_org: TButton
         AlignWithMargins = True
@@ -103,10 +95,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Insert'
         TabOrder = 1
         OnClick = btn_insert_orgClick
-        ExplicitLeft = 112
-        ExplicitTop = 8
-        ExplicitWidth = 75
-        ExplicitHeight = 25
       end
       object btn_edit_org: TButton
         AlignWithMargins = True
@@ -122,10 +110,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Edit'
         TabOrder = 2
         OnClick = btn_edit_orgClick
-        ExplicitLeft = 40
-        ExplicitTop = 32
-        ExplicitWidth = 75
-        ExplicitHeight = 25
       end
       object btn_delete_org: TButton
         AlignWithMargins = True
@@ -141,10 +125,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Delete'
         TabOrder = 3
         OnClick = btn_delete_orgClick
-        ExplicitLeft = 120
-        ExplicitTop = 48
-        ExplicitWidth = 75
-        ExplicitHeight = 25
       end
     end
     object dbg_organization: TDBGrid
@@ -172,9 +152,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Align = alLeft
     Caption = 'Boards'
     TabOrder = 1
-    ExplicitLeft = 237
-    ExplicitTop = 8
-    ExplicitHeight = 416
     object GridPanel1: TGridPanel
       Left = 2
       Top = 15
@@ -222,8 +199,8 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         AlignWithMargins = True
         Left = 1
         Top = 1
-        Width = 107
-        Height = 30
+        Width = 108
+        Height = 31
         Margins.Left = 1
         Margins.Top = 1
         Margins.Right = 1
@@ -232,15 +209,13 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Active'
         TabOrder = 0
         OnClick = btn_active_borClick
-        ExplicitLeft = 2
-        ExplicitTop = 2
       end
       object btn_insert_bor: TButton
         AlignWithMargins = True
-        Left = 110
+        Left = 111
         Top = 1
-        Width = 108
-        Height = 30
+        Width = 109
+        Height = 31
         Margins.Left = 1
         Margins.Top = 1
         Margins.Right = 1
@@ -249,15 +224,13 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Insert'
         TabOrder = 1
         OnClick = btn_insert_borClick
-        ExplicitLeft = 111
-        ExplicitTop = 2
       end
       object btn_edit_bor: TButton
         AlignWithMargins = True
         Left = 1
-        Top = 33
-        Width = 107
-        Height = 30
+        Top = 34
+        Width = 108
+        Height = 31
         Margins.Left = 1
         Margins.Top = 1
         Margins.Right = 1
@@ -266,15 +239,13 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Edit'
         TabOrder = 2
         OnClick = btn_edit_borClick
-        ExplicitLeft = 2
-        ExplicitTop = 34
       end
       object btn_delete_bor: TButton
         AlignWithMargins = True
-        Left = 110
-        Top = 33
-        Width = 108
-        Height = 30
+        Left = 111
+        Top = 34
+        Width = 109
+        Height = 31
         Margins.Left = 1
         Margins.Top = 1
         Margins.Right = 1
@@ -283,8 +254,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Delete'
         TabOrder = 3
         OnClick = btn_delete_borClick
-        ExplicitLeft = 111
-        ExplicitTop = 34
       end
     end
     object dbg_boads: TDBGrid
@@ -312,9 +281,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Align = alLeft
     Caption = 'Lists'
     TabOrder = 2
-    ExplicitLeft = 466
-    ExplicitTop = 8
-    ExplicitHeight = 416
     object GridPanel2: TGridPanel
       Left = 2
       Top = 15
@@ -372,10 +338,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Active'
         TabOrder = 0
         OnClick = btn_active_lisClick
-        ExplicitLeft = 2
-        ExplicitTop = 2
-        ExplicitWidth = 107
-        ExplicitHeight = 30
       end
       object btn_insert_lis: TButton
         AlignWithMargins = True
@@ -391,9 +353,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Insert'
         TabOrder = 1
         OnClick = btn_insert_lisClick
-        ExplicitTop = 2
-        ExplicitWidth = 108
-        ExplicitHeight = 30
       end
       object btn_edit_lis: TButton
         AlignWithMargins = True
@@ -409,9 +368,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Edit'
         TabOrder = 2
         OnClick = btn_edit_lisClick
-        ExplicitLeft = 2
-        ExplicitWidth = 107
-        ExplicitHeight = 30
       end
       object btn_delete_lis: TButton
         AlignWithMargins = True
@@ -427,8 +383,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Delete'
         TabOrder = 3
         Visible = False
-        ExplicitWidth = 108
-        ExplicitHeight = 30
       end
     end
     object dbg_lists: TDBGrid
@@ -456,9 +410,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Align = alLeft
     Caption = 'Cards'
     TabOrder = 3
-    ExplicitLeft = 697
-    ExplicitTop = 8
-    ExplicitHeight = 416
     object GridPanel3: TGridPanel
       Left = 2
       Top = 15
@@ -506,8 +457,8 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         AlignWithMargins = True
         Left = 1
         Top = 1
-        Width = 107
-        Height = 30
+        Width = 108
+        Height = 31
         Margins.Left = 1
         Margins.Top = 1
         Margins.Right = 1
@@ -516,15 +467,13 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Active'
         TabOrder = 0
         OnClick = btn_active_carClick
-        ExplicitLeft = 2
-        ExplicitTop = 2
       end
       object btn_insert_car: TButton
         AlignWithMargins = True
-        Left = 110
+        Left = 111
         Top = 1
-        Width = 108
-        Height = 30
+        Width = 109
+        Height = 31
         Margins.Left = 1
         Margins.Top = 1
         Margins.Right = 1
@@ -533,15 +482,13 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Insert'
         TabOrder = 1
         OnClick = btn_insert_carClick
-        ExplicitLeft = 111
-        ExplicitTop = 2
       end
       object btn_edit_car: TButton
         AlignWithMargins = True
         Left = 1
-        Top = 33
-        Width = 107
-        Height = 30
+        Top = 34
+        Width = 108
+        Height = 31
         Margins.Left = 1
         Margins.Top = 1
         Margins.Right = 1
@@ -550,15 +497,13 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Edit'
         TabOrder = 2
         OnClick = btn_edit_carClick
-        ExplicitLeft = 2
-        ExplicitTop = 34
       end
       object btn_delete_car: TButton
         AlignWithMargins = True
-        Left = 110
-        Top = 33
-        Width = 108
-        Height = 30
+        Left = 111
+        Top = 34
+        Width = 109
+        Height = 31
         Margins.Left = 1
         Margins.Top = 1
         Margins.Right = 1
@@ -567,8 +512,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Caption = 'Delete'
         TabOrder = 3
         OnClick = btn_delete_carClick
-        ExplicitLeft = 111
-        ExplicitTop = 34
       end
     end
     object dbg_cards: TDBGrid
@@ -676,9 +619,9 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Top = 331
   end
   object Authenticator1: TAuthenticator
-    User = 'juceliusdevelop'
-    Key = '86a608b396aebfcf164cf756efcb1426'
-    Token = 'd3147efb6b235291273a346bc6d83a88e96d3baa82d008475c7b78ca51b2faf6'
+    User = 'winiciusmoreira'
+    Key = '8e95f857762402db873892fa6f5c38b4'
+    Token = '0e12b3d57f92d8dde0599936e85f17a7edc1cc806c9ac127efe59180fcfa0a51'
     Left = 458
     Top = 27
   end
