@@ -7,8 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, dtrello.authenticator, dtrello.cards,
-  dtrello.lists, dtrello.boards, dtrello.organizations, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls;
+  dtrello.lists, dtrello.boards, dtrello.organizations, dtrello.members,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
   Tdtrello_demo_principal = class(TForm)
@@ -53,6 +53,17 @@ type
     Lists1: TLists;
     Cards1: TCards;
     Authenticator1: TAuthenticator;
+    Members1: TMembers;
+    mtb_members: TFDMemTable;
+    ds_members: TDataSource;
+    Authenticator2: TAuthenticator;
+    GroupBox1: TGroupBox;
+    GridPanel4: TGridPanel;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    DBGrid1: TDBGrid;
     procedure btn_active_orgClick(Sender: TObject);
     procedure btn_delete_orgClick(Sender: TObject);
     procedure btn_insert_orgClick(Sender: TObject);
@@ -89,8 +100,8 @@ end;
 
 procedure Tdtrello_demo_principal.btn_active_carClick(Sender: TObject);
 begin
-  Cards1.IdList:= Lists1.DataSet.FieldByName('id').AsString;
-  Cards1.Active:= True;
+  Members1.IdBoard := Boards1.DataSet.FieldByName('id').AsString;
+  Members1.Active  := TRUE;
 end;
 
 procedure Tdtrello_demo_principal.btn_active_lisClick(Sender: TObject);

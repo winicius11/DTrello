@@ -59,7 +59,7 @@ function Ttrello_members.Get(const AParams: array of TJSONPair): TRESTResponse;
 begin
   try
     Result:= Request(TRESTRequestMethod.rmGET,
-      Format('%s/members/%s/%s', [TDTrelloContants.BaseUrl, IdBoard, EndPoint]), []);
+      Format('%s/boards/%s/%s', [TDTrelloContants.BaseUrl, IdBoard, EndPoint]), []);
   except
     raise;
   end;
