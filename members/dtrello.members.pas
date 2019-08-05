@@ -13,6 +13,7 @@ type
     FDataSet: TFDMemTable;
     FActive: Boolean;
     FIdBoard: string;
+    FOnActive: TNotifyEvent;
     procedure SetActive(const Value: Boolean);
     procedure SetAuthenticator(const Value: TAuthenticator);
     procedure SetDataSet(const Value: TFDMemTable);
@@ -35,6 +36,9 @@ type
     property DataSet: TFDMemTable read FDataSet write SetDataSet;
     property Active: Boolean read FActive write SetActive default False;
     property IdBoard: string read FIdBoard write SetIdBoard;
+
+    // Events
+    property OnActive: TNotifyEvent read FOnActive write FOnActive;
   end;
 
 procedure Register;
@@ -45,6 +49,8 @@ implementation
 resourcestring
   StrInformeOIdentifica = 'Informe o identificador da lista.';
   StrComponentAuthentica = 'Component Authenticator não encontrado.';
+
+{$R ..\Organizations.dcr}
 
 procedure Register;
 begin
@@ -121,6 +127,8 @@ begin
                 if FDataSet.Active then
                 FDataSet.First;
                 FDataSet.EnableControls;
+                if Assigned(FOnActive) then
+                  FOnActive(Self);
               end;
               Free;
             end;

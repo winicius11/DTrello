@@ -35,6 +35,7 @@ end;
 
 function Ttrello_organizations.Delete(const Value: string): TRESTResponse;
 begin
+  Exit;
   try
     Result:= Request(TRESTRequestMethod.rmDELETE,
       Format('%s/%s/%s', [TDTrelloContants.BaseUrl, EndPoint, Value]), []);
@@ -62,6 +63,7 @@ end;
 
 function Ttrello_organizations.Post(const AParams: array of string): TRESTResponse;
 begin
+  Exit;
   try
     Result:= Request(TRESTRequestMethod.rmPOST,
       Format('%s/%s', [TDTrelloContants.BaseUrl, EndPoint]),
@@ -78,6 +80,7 @@ function Ttrello_organizations.Put(const Value: string;
                  const FieldName: string;
                  const AParams: string): TRESTResponse;
 begin
+  Exit;
   try
     Result:= Request(TRESTRequestMethod.rmPUT,
       Format('%s/%s/%s/%s', [TDTrelloContants.BaseUrl, EndPoint, Value, FieldName]),

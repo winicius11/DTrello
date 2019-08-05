@@ -56,7 +56,6 @@ type
     Members1: TMembers;
     mtb_members: TFDMemTable;
     ds_members: TDataSource;
-    Authenticator2: TAuthenticator;
     GroupBox1: TGroupBox;
     GridPanel4: TGridPanel;
     Button1: TButton;

@@ -59,7 +59,7 @@ function Ttrello_members.Get(const AParams: array of TJSONPair): TRESTResponse;
 begin
   try
     Result:= Request(TRESTRequestMethod.rmGET,
-      Format('%s/boards/%s/%s', [TDTrelloContants.BaseUrl, IdBoard, EndPoint]), []);
+      Format('%s/boards/%s/%s?fields=all', [TDTrelloContants.BaseUrl, IdBoard, EndPoint]), []);
   except
     raise;
   end;
@@ -67,6 +67,7 @@ end;
 
 function Ttrello_members.Post(const AParams: array of string): TRESTResponse;
 begin
+  Exit;
   try
     Result:= Request(TRESTRequestMethod.rmPOST,
       Format('%s/%s', [TDTrelloContants.BaseUrl, EndPoint]),
@@ -81,6 +82,7 @@ end;
 function Ttrello_members.Put(const Value, FieldName,
   AParams: string): TRESTResponse;
 begin
+  Exit;
   try
     Result:= Request(TRESTRequestMethod.rmPUT,
       Format('%s/%s/%s/%s', [TDTrelloContants.BaseUrl, EndPoint, Value, FieldName]),

@@ -16,6 +16,7 @@ type
     FDataSet: TFDMemTable;
     FActive: Boolean;
     FIdList: string;
+    FOnActive: TNotifyEvent;
     procedure SetActive(const Value: Boolean);
     procedure SetAuthenticator(const Value: TAuthenticator);
     procedure SetDataSet(const Value: TFDMemTable);
@@ -39,6 +40,9 @@ type
     property DataSet: TFDMemTable read FDataSet write SetDataSet;
     property Active: Boolean read FActive write SetActive default False;
     property IdList: string read FIdList write SetIdList;
+
+    // Events
+    property OnActive: TNotifyEvent read FOnActive write FOnActive;
   end;
 
 procedure Register;
@@ -184,6 +188,8 @@ begin
                 if FDataSet.Active then
                 FDataSet.First;
                 FDataSet.EnableControls;
+                if Assigned(FOnActive) then
+                  FOnActive(Self);
               end;
               Free;
             end;

@@ -1,10 +1,9 @@
 object dtrello_demo_principal: Tdtrello_demo_principal
   Left = 0
   Top = 0
-  BorderStyle = bsDialog
   Caption = 'DTrello Demo - juceliusdevelop@gmaiil.com'
-  ClientHeight = 442
-  ClientWidth = 1170
+  ClientHeight = 432
+  ClientWidth = 1160
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,10 +18,11 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Left = 3
     Top = 3
     Width = 225
-    Height = 436
+    Height = 426
     Align = alLeft
     Caption = 'Organizations'
     TabOrder = 0
+    ExplicitHeight = 436
     object grdpnl_organization: TGridPanel
       Left = 2
       Top = 15
@@ -131,7 +131,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 353
+      Height = 343
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_organization
@@ -148,10 +148,11 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Left = 234
     Top = 3
     Width = 225
-    Height = 436
+    Height = 426
     Align = alLeft
     Caption = 'Boards'
     TabOrder = 1
+    ExplicitHeight = 436
     object GridPanel1: TGridPanel
       Left = 2
       Top = 15
@@ -260,7 +261,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 353
+      Height = 343
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_board
@@ -277,10 +278,11 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Left = 465
     Top = 3
     Width = 225
-    Height = 436
+    Height = 426
     Align = alLeft
     Caption = 'Lists'
     TabOrder = 2
+    ExplicitHeight = 436
     object GridPanel2: TGridPanel
       Left = 2
       Top = 15
@@ -389,7 +391,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 353
+      Height = 343
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_list
@@ -406,10 +408,11 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Left = 696
     Top = 3
     Width = 225
-    Height = 436
+    Height = 426
     Align = alLeft
     Caption = 'Cards'
     TabOrder = 3
+    ExplicitHeight = 436
     object GridPanel3: TGridPanel
       Left = 2
       Top = 15
@@ -518,7 +521,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 353
+      Height = 343
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_card
@@ -535,10 +538,11 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Left = 927
     Top = 3
     Width = 225
-    Height = 436
+    Height = 426
     Align = alLeft
     Caption = 'Members'
     TabOrder = 4
+    ExplicitHeight = 436
     object GridPanel4: TGridPanel
       Left = 2
       Top = 15
@@ -647,7 +651,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 353
+      Height = 343
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_members
@@ -975,26 +979,26 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Top = 267
   end
   object Organizations1: TOrganizations
-    Authenticator = Authenticator2
+    Authenticator = Authenticator1
     DataSet = mtb_organization
     Left = 75
     Top = 331
   end
   object Boards1: TBoards
-    Authenticator = Authenticator2
+    Authenticator = Authenticator1
     DataSet = mtb_board
     IdOrganization = '52a5b010b958b54d7d0015b8'
     Left = 290
     Top = 307
   end
   object Lists1: TLists
-    Authenticator = Authenticator2
+    Authenticator = Authenticator1
     DataSet = mtb_list
     Left = 561
     Top = 307
   end
   object Cards1: TCards
-    Authenticator = Authenticator2
+    Authenticator = Authenticator1
     DataSet = mtb_card
     Left = 744
     Top = 331
@@ -1007,7 +1011,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Top = 107
   end
   object Members1: TMembers
-    Authenticator = Authenticator2
+    Authenticator = Authenticator1
     DataSet = mtb_members
     IdBoard = '52a5d97e4f9973d24300434f'
     Left = 986
@@ -1028,12 +1032,5 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     DataSet = mtb_members
     Left = 970
     Top = 243
-  end
-  object Authenticator2: TAuthenticator
-    User = 'winiciusmoreira'
-    Key = '8e95f857762402db873892fa6f5c38b4'
-    Token = '0e12b3d57f92d8dde0599936e85f17a7edc1cc806c9ac127efe59180fcfa0a51'
-    Left = 154
-    Top = 107
   end
 end
