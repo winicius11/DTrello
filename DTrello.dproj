@@ -129,6 +129,8 @@
         <DCCReference Include="core\trello.members.pas"/>
         <DCCReference Include="cards\dtrello.cards.pas"/>
         <DCCReference Include="members\dtrello.members.pas"/>
+        <DCCReference Include="actions\dtrello.actions.pas"/>
+        <DCCReference Include="core\trello.actions.pas"/>
         <RcItem Include="images\TORGANIZATIONS.bmp">
             <ResourceType>BITMAP</ResourceType>
             <ResourceId>TORGANIZATIONS</ResourceId>
@@ -162,7 +164,7 @@
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule"/>
                 <DeployFile LocalName="..\..\..\..\..\..\Public\Documents\Embarcadero\Studio\17.0\Bpl\DTrello.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule"/>
-                <DeployFile LocalName="..\..\..\..\..\..\Public\Documents\Embarcadero\Studio\20.0\Bpl\DTrello.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\DTrello.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>DTrello.bpl</RemoteName>
                         <Overwrite>true</Overwrite>

@@ -1,18 +1,18 @@
-unit trello.cards;
+unit trello.actions;
 
 interface
 
 uses
-  {Winapi.Windows, Winapi.Messages, }System.SysUtils, System.Variants, System.Classes,
+{  Winapi.Windows, Winapi.Messages, }System.SysUtils, System.Variants, System.Classes,
   trello.core, System.JSON, REST.Client, IPPeerCommon, dtrello.authenticator;
 
 type
-  Ttrello_cards = class(Ttrello_base)
+  Ttrello_actions = class(Ttrello_base)
   private
-    FIdList: string;
-    procedure SetIdList(const Value: string);
+    FIdCard: string;
+    procedure SetIdCard(const Value: string);
   public
-    constructor Create(const AIdList: string; const AAuthenticator: TAuthenticator);
+    constructor Create(const AIdCard: string; const AAuthenticator: TAuthenticator);
     destructor Destroy; override;
 
     function Get(const AParams: array of TJSONPair): TRESTResponse;
@@ -22,7 +22,7 @@ type
                  const AParams: string): TRESTResponse;
     function Delete(const Value: string): TRESTResponse;
 
-    property IdList: string read FIdList write SetIdList;
+    property IdCard: string read FIdCard write SetIdCard;
   end;
 
 implementation
@@ -30,16 +30,16 @@ implementation
        System.Threading, REST.Types, trello.authenticator, trello.constants;
 
 resourcestring
-  StrCards = 'cards';
+  Stractions = 'actions';
 
-constructor Ttrello_cards.Create(const AIdList: string; const AAuthenticator: TAuthenticator);
+constructor Ttrello_actions.Create(const AIdCard: string; const AAuthenticator: TAuthenticator);
 begin
   inherited Create(AAuthenticator);
-  EndPoint:= StrCards;
-  FIdList:= AIdList;
+  EndPoint:= Stractions;
+  FIdCard := AIdCard;
 end;
 
-function Ttrello_cards.Delete(const Value: string): TRESTResponse;
+function Ttrello_actions.Delete(const Value: string): TRESTResponse;
 begin
   try
     Result:= Request(TRESTRequestMethod.rmDELETE,
@@ -49,38 +49,40 @@ begin
   end;
 end;
 
-destructor Ttrello_cards.Destroy;
+destructor Ttrello_actions.Destroy;
 begin
 //
   inherited;
 end;
 
-function Ttrello_cards.Get(const AParams: array of TJSONPair): TRESTResponse;
+function Ttrello_actions.Get(const AParams: array of TJSONPair): TRESTResponse;
 begin
   try
     Result:= Request(TRESTRequestMethod.rmGET,
-      Format('%s/lists/%s/%s', [TDTrelloContants.BaseUrl, IdList, EndPoint]), []);
+      Format('%s/cards/%s/%s?fields=all', [TDTrelloContants.BaseUrl, IdCard, EndPoint]), []);
   except
     raise;
   end;
 end;
 
-function Ttrello_cards.Post(const AParams: array of string): TRESTResponse;
+function Ttrello_actions.Post(const AParams: array of string): TRESTResponse;
 begin
+  Exit;
   try
     Result:= Request(TRESTRequestMethod.rmPOST,
       Format('%s/%s', [TDTrelloContants.BaseUrl, EndPoint]),
       [TJSONPair.Create('name', AParams[0]),
-       TJSONPair.Create('idMembers', Authenticator.Id),
+       TJSONPair.Create('idactions', Authenticator.Id),
        TJSONPair.Create('idList', AParams[1])]);
   except
     raise;
   end;
 end;
 
-function Ttrello_cards.Put(const Value, FieldName,
+function Ttrello_actions.Put(const Value, FieldName,
   AParams: string): TRESTResponse;
 begin
+  Exit;
   try
     Result:= Request(TRESTRequestMethod.rmPUT,
       Format('%s/%s/%s/%s', [TDTrelloContants.BaseUrl, EndPoint, Value, FieldName]),
@@ -90,9 +92,9 @@ begin
   end;
 end;
 
-procedure Ttrello_cards.SetIdList(const Value: string);
+procedure Ttrello_actions.SetIdCard(const Value: string);
 begin
-  FIdList := Value;
+  FIdCard := Value;
 end;
 
 end.

@@ -11,6 +11,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object grp_organization: TGroupBox
@@ -22,7 +23,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Align = alLeft
     Caption = 'Organizations'
     TabOrder = 0
-    ExplicitHeight = 436
     object grdpnl_organization: TGridPanel
       Left = 2
       Top = 15
@@ -152,7 +152,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Align = alLeft
     Caption = 'Boards'
     TabOrder = 1
-    ExplicitHeight = 436
     object GridPanel1: TGridPanel
       Left = 2
       Top = 15
@@ -282,7 +281,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Align = alLeft
     Caption = 'Lists'
     TabOrder = 2
-    ExplicitHeight = 436
     object GridPanel2: TGridPanel
       Left = 2
       Top = 15
@@ -412,7 +410,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Align = alLeft
     Caption = 'Cards'
     TabOrder = 3
-    ExplicitHeight = 436
     object GridPanel3: TGridPanel
       Left = 2
       Top = 15
@@ -542,7 +539,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Align = alLeft
     Caption = 'Members'
     TabOrder = 4
-    ExplicitHeight = 436
     object GridPanel4: TGridPanel
       Left = 2
       Top = 15
@@ -808,126 +804,12 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Top = 163
   end
   object mtb_board: TFDMemTable
-    FieldDefs = <
-      item
-        Name = 'name'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'desc'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'descData'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'closed'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'idOrganization'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'limits'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'pinned'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'shortLink'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'powerUps'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'dateLastActivity'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'idTags'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'datePluginDisable'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'creationMethod'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'ixUpdate'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'id'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'starred'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'url'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'prefs'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'subscribed'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'labelNames'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'dateLastView'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'shortUrl'
-        DataType = ftWideString
-        Size = 255
-      end
-      item
-        Name = 'memberships'
-        DataType = ftWideString
-        Size = 255
-      end>
+    FieldDefs = <>
     IndexDefs = <>
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.AssignedValues = [rvPersistent, rvSilentMode]
+    ResourceOptions.Persistent = True
     ResourceOptions.SilentMode = True
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
@@ -1032,5 +914,61 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     DataSet = mtb_members
     Left = 970
     Top = 243
+  end
+  object Actions1: TActions
+    Authenticator = Authenticator1
+    DataSet = FDMemTable1
+    Active = True
+    IdCard = '5cf6d5cfaf5a802220280485'
+    RootElement = '[0].data'
+    OnActive = Actions1Active
+    Left = 1071
+    Top = 315
+  end
+  object FDMemTable1: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'old'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'card'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'board'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'listBefore'
+        DataType = ftWideString
+        Size = 255
+      end
+      item
+        Name = 'listAfter'
+        DataType = ftWideString
+        Size = 255
+      end>
+    IndexDefs = <>
+    MasterFields = 'data'
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 1058
+    Top = 195
+  end
+  object DataSource1: TDataSource
+    DataSet = FDMemTable1
+    Left = 1066
+    Top = 251
   end
 end

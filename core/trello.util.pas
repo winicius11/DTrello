@@ -8,14 +8,14 @@ uses
 
 type
   TTFDMemTableHelper = class helper for TFDMemTable
-    procedure DataInJson(const Value: TRESTResponse; const AOpen: Boolean = True);
+    procedure DataInJson(const Value: TRESTResponse; const AOpen: Boolean = True; RootElement: string = '');
   end;
 
 implementation
 
 { TTFDMemTableHelper }
 
-procedure TTFDMemTableHelper.DataInJson(const Value: TRESTResponse; const AOpen: Boolean = True);
+procedure TTFDMemTableHelper.DataInJson(const Value: TRESTResponse; const AOpen: Boolean = True; RootElement: string = '');
 var
   loRESTResponseDataSetAdapter: TRESTResponseDataSetAdapter;
 begin
@@ -25,6 +25,7 @@ begin
 
   loRESTResponseDataSetAdapter:= TRESTResponseDataSetAdapter.Create(nil);
   try
+    loRESTResponseDataSetAdapter.RootElement := RootElement;
     loRESTResponseDataSetAdapter.Dataset:= Self;
     loRESTResponseDataSetAdapter.Response:= Value;
     if AOpen then
