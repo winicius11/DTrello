@@ -63,6 +63,8 @@ contains
   dtrello.lists in 'lists\dtrello.lists.pas',
   trello.members in 'core\trello.members.pas',
   dtrello.cards in 'cards\dtrello.cards.pas',
-  dtrello.members in 'members\dtrello.members.pas';
+  dtrello.members in 'members\dtrello.members.pas',
+  dtrello.actions in 'actions\dtrello.actions.pas',
+  trello.actions in 'core\trello.actions.pas';
 
 end.

@@ -2,8 +2,8 @@ object dtrello_demo_principal: Tdtrello_demo_principal
   Left = 0
   Top = 0
   Caption = 'DTrello Demo - juceliusdevelop@gmaiil.com'
-  ClientHeight = 432
-  ClientWidth = 1160
+  ClientHeight = 486
+  ClientWidth = 1398
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,11 +18,10 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Left = 3
     Top = 3
     Width = 225
-    Height = 426
+    Height = 480
     Align = alLeft
     Caption = 'Organizations'
     TabOrder = 0
-    ExplicitHeight = 436
     object grdpnl_organization: TGridPanel
       Left = 2
       Top = 15
@@ -131,7 +130,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 343
+      Height = 397
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_organization
@@ -145,14 +144,13 @@ object dtrello_demo_principal: Tdtrello_demo_principal
   end
   object grp_board: TGroupBox
     AlignWithMargins = True
-    Left = 234
+    Left = 465
     Top = 3
     Width = 225
-    Height = 426
+    Height = 480
     Align = alLeft
     Caption = 'Boards'
     TabOrder = 1
-    ExplicitHeight = 436
     object GridPanel1: TGridPanel
       Left = 2
       Top = 15
@@ -261,7 +259,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 343
+      Height = 397
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_board
@@ -275,14 +273,13 @@ object dtrello_demo_principal: Tdtrello_demo_principal
   end
   object grp_list: TGroupBox
     AlignWithMargins = True
-    Left = 465
+    Left = 696
     Top = 3
     Width = 225
-    Height = 426
+    Height = 480
     Align = alLeft
     Caption = 'Lists'
     TabOrder = 2
-    ExplicitHeight = 436
     object GridPanel2: TGridPanel
       Left = 2
       Top = 15
@@ -391,7 +388,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 343
+      Height = 397
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_list
@@ -405,14 +402,13 @@ object dtrello_demo_principal: Tdtrello_demo_principal
   end
   object grp_card: TGroupBox
     AlignWithMargins = True
-    Left = 696
+    Left = 927
     Top = 3
     Width = 225
-    Height = 426
+    Height = 480
     Align = alLeft
     Caption = 'Cards'
     TabOrder = 3
-    ExplicitHeight = 436
     object GridPanel3: TGridPanel
       Left = 2
       Top = 15
@@ -521,7 +517,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 343
+      Height = 397
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_card
@@ -535,14 +531,13 @@ object dtrello_demo_principal: Tdtrello_demo_principal
   end
   object GroupBox1: TGroupBox
     AlignWithMargins = True
-    Left = 927
+    Left = 1158
     Top = 3
     Width = 225
-    Height = 426
+    Height = 480
     Align = alLeft
     Caption = 'Members'
     TabOrder = 4
-    ExplicitHeight = 436
     object GridPanel4: TGridPanel
       Left = 2
       Top = 15
@@ -651,7 +646,136 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 343
+      Height = 397
+      Align = alClient
+      BorderStyle = bsNone
+      DataSource = ds_members
+      TabOrder = 1
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+    end
+  end
+  object GroupBox2: TGroupBox
+    AlignWithMargins = True
+    Left = 234
+    Top = 3
+    Width = 225
+    Height = 480
+    Align = alLeft
+    Caption = 'Members'
+    TabOrder = 5
+    object GridPanel5: TGridPanel
+      Left = 2
+      Top = 15
+      Width = 221
+      Height = 66
+      Align = alTop
+      BevelOuter = bvNone
+      ColumnCollection = <
+        item
+          Value = 50.000000000000000000
+        end
+        item
+          Value = 50.000000000000000000
+        end>
+      ControlCollection = <
+        item
+          Column = 0
+          Control = Button5
+          Row = 0
+        end
+        item
+          Column = 1
+          Control = Button6
+          Row = 0
+        end
+        item
+          Column = 0
+          Control = Button7
+          Row = 1
+        end
+        item
+          Column = 1
+          Control = Button8
+          Row = 1
+        end>
+      RowCollection = <
+        item
+          Value = 50.000000000000000000
+        end
+        item
+          Value = 50.000000000000000000
+        end>
+      TabOrder = 0
+      object Button5: TButton
+        AlignWithMargins = True
+        Left = 1
+        Top = 1
+        Width = 108
+        Height = 31
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
+        Align = alClient
+        Caption = 'Active'
+        TabOrder = 0
+        OnClick = btn_active_carClick
+      end
+      object Button6: TButton
+        AlignWithMargins = True
+        Left = 111
+        Top = 1
+        Width = 109
+        Height = 31
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
+        Align = alClient
+        Caption = 'Insert'
+        TabOrder = 1
+        OnClick = btn_insert_carClick
+      end
+      object Button7: TButton
+        AlignWithMargins = True
+        Left = 1
+        Top = 34
+        Width = 108
+        Height = 31
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
+        Align = alClient
+        Caption = 'Edit'
+        TabOrder = 2
+        OnClick = btn_edit_carClick
+      end
+      object Button8: TButton
+        AlignWithMargins = True
+        Left = 111
+        Top = 34
+        Width = 109
+        Height = 31
+        Margins.Left = 1
+        Margins.Top = 1
+        Margins.Right = 1
+        Margins.Bottom = 1
+        Align = alClient
+        Caption = 'Delete'
+        TabOrder = 3
+        OnClick = btn_delete_carClick
+      end
+    end
+    object DBGrid2: TDBGrid
+      Left = 2
+      Top = 81
+      Width = 221
+      Height = 397
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_members
@@ -1032,5 +1156,25 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     DataSet = mtb_members
     Left = 970
     Top = 243
+  end
+  object mtb_actions: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 1186
+    Top = 195
+  end
+  object ds_actions: TDataSource
+    DataSet = mtb_actions
+    Left = 1186
+    Top = 275
+  end
+  object Actions1: TActions
+    Left = 1190
+    Top = 339
   end
 end

@@ -1,7 +1,7 @@
 //Jucelio Moura - juceliusdevelop@gmail.com
 //https://www.youtube.com/channel/UCMDXBe5-lrP-T-molp2cSBg/videos
 
-unit dtrello.cards;
+unit dtrello.actions;
 
 interface
 
@@ -10,17 +10,17 @@ uses
   FireDAC.Comp.Client, Data.DB;
 
 type
-  TCards = class(TComponent)
+  TActions = class(TComponent)
   private
     FAuthenticator: TAuthenticator;
     FDataSet: TFDMemTable;
     FActive: Boolean;
-    FIdList: string;
+    FIdCard: string;
     FOnActive: TNotifyEvent;
     procedure SetActive(const Value: Boolean);
     procedure SetAuthenticator(const Value: TAuthenticator);
     procedure SetDataSet(const Value: TFDMemTable);
-    procedure SetIdList(const Value: string);
+    procedure SetIdCard(const Value: string);
     { Private declarations }
   protected
     { Protected declarations }
@@ -39,7 +39,7 @@ type
     property Authenticator: TAuthenticator read FAuthenticator write SetAuthenticator;
     property DataSet: TFDMemTable read FDataSet write SetDataSet;
     property Active: Boolean read FActive write SetActive default False;
-    property IdList: string read FIdList write SetIdList;
+    property IdCard: string read FIdCard write SetIdCard;
 
     // Events
     property OnActive: TNotifyEvent read FOnActive write FOnActive;
@@ -48,7 +48,7 @@ type
 procedure Register;
 
 implementation
-  uses System.Threading, trello.util, REST.Client, trello.cards;
+  uses System.Threading, trello.util, REST.Client, trello.actions;
 
 {$R ..\Organizations.dcr}
 
@@ -58,20 +58,20 @@ resourcestring
 
 procedure Register;
 begin
-  RegisterComponents('DTrello', [TCards]);
+  RegisterComponents('DTrello', [TActions]);
 end;
 
-function TCards.Delete: Boolean;
+function TActions.Delete: Boolean;
 begin
   Result:= FDataSet <> nil;
   if Result then
     Result:= Self.Delete(FDataSet.FieldByName('id').AsString);
 end;
 
-function TCards.Delete(const AId: string): Boolean;
+function TActions.Delete(const AId: string): Boolean;
 begin
   Result:= False;
-  with Ttrello_cards.Create(FIdList, FAuthenticator) do
+  with Ttrello_cards.Create(FIdCard, FAuthenticator) do
   begin
     try
       Result:= Delete(AId).StatusCode = 200;
@@ -81,16 +81,16 @@ begin
   end;
 end;
 
-function TCards.Edit(const AId, FieldName, Value: string): Boolean;
+function TActions.Edit(const AId, FieldName, Value: string): Boolean;
 begin
   Result:= False;
   if FAuthenticator = nil then
     raise Exception.Create(StrComponentAuthentica);
 
-  if Trim(FIdList) = EmptyStr then
+  if Trim(FIdCard) = EmptyStr then
     raise Exception.Create(StrInformeOIdentifica);
 
-  with Ttrello_cards.Create(FIdList, FAuthenticator) do
+  with Ttrello_cards.Create(FIdCard, FAuthenticator) do
   begin
     try
       Result:= Put(AId, FieldName, Value).StatusCode = 200;
@@ -100,33 +100,33 @@ begin
   end;
 end;
 
-function TCards.Edit(FieldName, Value: string): Boolean;
+function TActions.Edit(FieldName, Value: string): Boolean;
 begin
   Result:= FDataSet <> nil;
   if Result then
     Result:= Self.Edit(FDataSet.FieldByName('id').AsString, FieldName, Value);
 end;
 
-function TCards.Insert(const AName: string): Boolean;
+function TActions.Insert(const AName: string): Boolean;
 begin
   Result:= False;
   if FAuthenticator = nil then
     raise Exception.Create(StrComponentAuthentica);
 
-  if Trim(FIdList) = EmptyStr then
+  if Trim(FIdCard) = EmptyStr then
     raise Exception.Create(StrInformeOIdentifica);
 
-  with Ttrello_cards.Create(FIdList, FAuthenticator) do
+  with Ttrello_cards.Create(FIdCard, FAuthenticator) do
   begin
     try
-      Result:= Post([AName, FIdList]).StatusCode = 200;
+      Result:= Post([AName, FIdCard]).StatusCode = 200;
     finally
       Free;
     end;
   end;
 end;
 
-procedure TCards.Notification(AComponent: TComponent; Operation: TOperation);
+procedure TActions.Notification(AComponent: TComponent; Operation: TOperation);
 begin
   inherited Notification(AComponent, Operation);
   if (Operation = opRemove) and (AComponent = FAuthenticator)
@@ -135,7 +135,7 @@ begin
     then FDataSet := nil;
 end;
 
-procedure TCards.Refresh;
+procedure TActions.Refresh;
 var
   loBook: TBookmark;
 begin
@@ -157,7 +157,7 @@ begin
   end;
 end;
 
-procedure TCards.SetActive(const Value: Boolean);
+procedure TActions.SetActive(const Value: Boolean);
 var
   loTask: ITask;
 begin
@@ -167,7 +167,7 @@ begin
     if FAuthenticator = nil then
       raise Exception.Create(StrComponentAuthentica);
 
-    if Trim(FIdList) = EmptyStr then
+    if Trim(FIdCard) = EmptyStr then
       raise Exception.Create(StrInformeOIdentifica);
 
     loTask:= TTask.Create(
@@ -176,7 +176,7 @@ begin
         TThread.Synchronize(nil,
         procedure
         begin
-          with Ttrello_cards.Create(FIdList, FAuthenticator) do
+          with Ttrello_cards.Create(FIdCard, FAuthenticator) do
           begin
             if FDataSet <> nil then
               FDataSet.DisableControls;
@@ -209,19 +209,19 @@ begin
   end;
 end;
 
-procedure TCards.SetAuthenticator(const Value: TAuthenticator);
+procedure TActions.SetAuthenticator(const Value: TAuthenticator);
 begin
   FAuthenticator := Value;
 end;
 
-procedure TCards.SetDataSet(const Value: TFDMemTable);
+procedure TActions.SetDataSet(const Value: TFDMemTable);
 begin
   FDataSet := Value;
 end;
 
-procedure TCards.SetIdList(const Value: string);
+procedure TActions.SetIdCard(const Value: string);
 begin
-  FIdList := Value;
+  FIdCard := Value;
 end;
 
 end.

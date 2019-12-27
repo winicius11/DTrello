@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, dtrello.authenticator, dtrello.cards,
   dtrello.lists, dtrello.boards, dtrello.organizations, dtrello.members,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls,
+  dtrello.actions;
 
 type
   Tdtrello_demo_principal = class(TForm)
@@ -63,6 +64,16 @@ type
     Button3: TButton;
     Button4: TButton;
     DBGrid1: TDBGrid;
+    GroupBox2: TGroupBox;
+    GridPanel5: TGridPanel;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
+    Button8: TButton;
+    DBGrid2: TDBGrid;
+    mtb_actions: TFDMemTable;
+    ds_actions: TDataSource;
+    Actions1: TActions;
     procedure btn_active_orgClick(Sender: TObject);
     procedure btn_delete_orgClick(Sender: TObject);
     procedure btn_insert_orgClick(Sender: TObject);
