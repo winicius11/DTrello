@@ -3,7 +3,7 @@ unit trello.core;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  {Winapi.Windows, Winapi.Messages, }System.SysUtils, System.Variants,
   System.Classes, System.JSON, REST.Client, IPPeerCommon, IndyPeerImpl,
   dtrello.authenticator, REST.Types;
 
@@ -56,7 +56,8 @@ begin
   FAuthenticator.User:= AAuthenticator.User;
   FAuthenticator.Key:= AAuthenticator.Key;
   FAuthenticator.Token:= AAuthenticator.Token;
-  SetId(FAuthenticator);
+  if FAuthenticator.Id.IsEmpty then
+    SetId(FAuthenticator);
 end;
 
 destructor Ttrello_base.Destroy;
@@ -124,3 +125,4 @@ begin
 end;
 
 end.
+

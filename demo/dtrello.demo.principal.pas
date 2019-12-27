@@ -9,7 +9,11 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, dtrello.authenticator, dtrello.cards,
   dtrello.lists, dtrello.boards, dtrello.organizations, dtrello.members,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls,
+<<<<<<< HEAD
   dtrello.actions;
+=======
+  FireDAC.Stan.StorageBin, dtrello.actions;
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
 
 type
   Tdtrello_demo_principal = class(TForm)
@@ -64,6 +68,7 @@ type
     Button3: TButton;
     Button4: TButton;
     DBGrid1: TDBGrid;
+<<<<<<< HEAD
     GroupBox2: TGroupBox;
     GridPanel5: TGridPanel;
     Button5: TButton;
@@ -74,6 +79,11 @@ type
     mtb_actions: TFDMemTable;
     ds_actions: TDataSource;
     Actions1: TActions;
+=======
+    Actions1: TActions;
+    FDMemTable1: TFDMemTable;
+    DataSource1: TDataSource;
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
     procedure btn_active_orgClick(Sender: TObject);
     procedure btn_delete_orgClick(Sender: TObject);
     procedure btn_insert_orgClick(Sender: TObject);
@@ -89,6 +99,8 @@ type
     procedure btn_insert_carClick(Sender: TObject);
     procedure btn_delete_carClick(Sender: TObject);
     procedure btn_edit_carClick(Sender: TObject);
+    procedure Actions1Active(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -101,6 +113,16 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure Tdtrello_demo_principal.Actions1Active(Sender: TObject);
+var
+  i: Integer;
+begin
+  for i := 0 to Actions1.DataSet.RecordCount - 1 do
+  begin
+
+  end;
+end;
 
 procedure Tdtrello_demo_principal.btn_active_borClick(Sender: TObject);
 begin
@@ -228,6 +250,11 @@ begin
   if InputQuery('Informe', 'Informe o valor:', loDisplayName) then
   if Organizations1.Insert('uToppicOrg', loDisplayName, 'Uma Descrição', '') then
     Organizations1.Refresh;
+end;
+
+procedure Tdtrello_demo_principal.FormCreate(Sender: TObject);
+begin
+  Actions1.Active := TRUE;
 end;
 
 end.

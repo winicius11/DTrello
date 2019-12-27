@@ -173,30 +173,34 @@ begin
       raise Exception.Create(StrInformeOIdentifica);
 
     loTask:= TTask.Create(
-      procedure ()
+      procedure
       begin
-        TThread.Synchronize(nil,
-        procedure
+//        TThread.Synchronize(nil,
+//        procedure
+//        begin
+        with Ttrello_boards.Create(FIdOrganization, FAuthenticator) do
         begin
-          with Ttrello_boards.Create(FIdOrganization, FAuthenticator) do
-          begin
+          if FDataSet <> nil then
+            FDataSet.DisableControls;
+          try
+            FDataSet.DataInJson(Get([]));
+          finally
             if FDataSet <> nil then
-              FDataSet.DisableControls;
-            try
-              FDataSet.DataInJson(Get([]));
-            finally
-              if FDataSet <> nil then
+            begin
+              if FDataSet.Active then
+              FDataSet.First;
+              FDataSet.EnableControls;
+              TThread.Synchronize(nil,
+              procedure
               begin
-                if FDataSet.Active then
-                FDataSet.First;
-                FDataSet.EnableControls;
                 if Assigned(FOnActive) then
                   FOnActive(Self);
-              end;
-              Free;
+              end);
             end;
+            Free;
           end;
-        end);
+        end;
+//        end);
       end
     );
     loTask.Start;

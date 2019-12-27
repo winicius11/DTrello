@@ -3,7 +3,7 @@ unit trello.authenticator;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  {Winapi.Windows, Winapi.Messages, }System.SysUtils, System.Variants, System.Classes,
   REST.Authenticator.OAuth;
 
 type

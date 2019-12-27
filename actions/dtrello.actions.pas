@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 //Jucelio Moura - juceliusdevelop@gmail.com
 //https://www.youtube.com/channel/UCMDXBe5-lrP-T-molp2cSBg/videos
 
+=======
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
 unit dtrello.actions;
 
 interface
@@ -17,11 +20,18 @@ type
     FActive: Boolean;
     FIdCard: string;
     FOnActive: TNotifyEvent;
+<<<<<<< HEAD
+=======
+    FRootElement: string;
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
     procedure SetActive(const Value: Boolean);
     procedure SetAuthenticator(const Value: TAuthenticator);
     procedure SetDataSet(const Value: TFDMemTable);
     procedure SetIdCard(const Value: string);
+<<<<<<< HEAD
     { Private declarations }
+=======
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
   protected
     { Protected declarations }
     procedure Notification(AComponent: TComponent;
@@ -40,6 +50,10 @@ type
     property DataSet: TFDMemTable read FDataSet write SetDataSet;
     property Active: Boolean read FActive write SetActive default False;
     property IdCard: string read FIdCard write SetIdCard;
+<<<<<<< HEAD
+=======
+    property RootElement: string read FRootElement write FRootElement;
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
 
     // Events
     property OnActive: TNotifyEvent read FOnActive write FOnActive;
@@ -48,19 +62,29 @@ type
 procedure Register;
 
 implementation
+<<<<<<< HEAD
   uses System.Threading, trello.util, REST.Client, trello.actions;
 
 {$R ..\Organizations.dcr}
+=======
+  uses System.Threading, trello.util, REST.Client, trello.Actions;
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
 
 resourcestring
   StrInformeOIdentifica = 'Informe o identificador da lista.';
   StrComponentAuthentica = 'Component Authenticator não encontrado.';
 
+<<<<<<< HEAD
+=======
+{$R ..\Organizations.dcr}
+
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
 procedure Register;
 begin
   RegisterComponents('DTrello', [TActions]);
 end;
 
+<<<<<<< HEAD
 function TActions.Delete: Boolean;
 begin
   Result:= FDataSet <> nil;
@@ -105,10 +129,31 @@ begin
   Result:= FDataSet <> nil;
   if Result then
     Result:= Self.Edit(FDataSet.FieldByName('id').AsString, FieldName, Value);
+=======
+function TActions.Delete(const AId: string): Boolean;
+begin
+
+end;
+
+function TActions.Delete: Boolean;
+begin
+
+end;
+
+function TActions.Edit(FieldName, Value: string): Boolean;
+begin
+
+end;
+
+function TActions.Edit(const AId, FieldName, Value: string): Boolean;
+begin
+
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
 end;
 
 function TActions.Insert(const AName: string): Boolean;
 begin
+<<<<<<< HEAD
   Result:= False;
   if FAuthenticator = nil then
     raise Exception.Create(StrComponentAuthentica);
@@ -124,6 +169,9 @@ begin
       Free;
     end;
   end;
+=======
+
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
 end;
 
 procedure TActions.Notification(AComponent: TComponent; Operation: TOperation);
@@ -136,6 +184,7 @@ begin
 end;
 
 procedure TActions.Refresh;
+<<<<<<< HEAD
 var
   loBook: TBookmark;
 begin
@@ -155,6 +204,10 @@ begin
       FDataSet.EnableControls;
     end;
   end;
+=======
+begin
+
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
 end;
 
 procedure TActions.SetActive(const Value: Boolean);
@@ -176,24 +229,37 @@ begin
         TThread.Synchronize(nil,
         procedure
         begin
+<<<<<<< HEAD
           with Ttrello_cards.Create(FIdCard, FAuthenticator) do
+=======
+          with Ttrello_Actions.Create(FIdCard, FAuthenticator) do
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
           begin
             if FDataSet <> nil then
               FDataSet.DisableControls;
             try
+<<<<<<< HEAD
               FDataSet.DataInJson(Get([]));
+=======
+              FDataSet.DataInJson(Get([]), true, RootElement);
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
             finally
               if FDataSet <> nil then
               begin
                 if FDataSet.Active then
                 FDataSet.First;
                 FDataSet.EnableControls;
+<<<<<<< HEAD
   //              TThread.Synchronize(nil,
   //              procedure
   //              begin
                   if Assigned(FOnActive) then
                     FOnActive(Self);
   //              end);
+=======
+                if Assigned(FOnActive) then
+                  FOnActive(Self);
+>>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
               end;
               Free;
             end;
