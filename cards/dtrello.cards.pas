@@ -188,21 +188,14 @@ begin
                 if FDataSet.Active then
                 FDataSet.First;
                 FDataSet.EnableControls;
-<<<<<<< HEAD
-  //              TThread.Synchronize(nil,
-  //              procedure
-  //              begin
-                  if Assigned(FOnActive) then
-                    FOnActive(Self);
-  //              end);
-=======
+
                 TThread.Synchronize(nil,
                 procedure
                 begin
                 if Assigned(FOnActive) then
                   FOnActive(Self);
                 end);
->>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
+
               end;
               Free;
             end;

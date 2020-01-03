@@ -2,8 +2,8 @@ object dtrello_demo_principal: Tdtrello_demo_principal
   Left = 0
   Top = 0
   Caption = 'DTrello Demo - juceliusdevelop@gmaiil.com'
-  ClientHeight = 486
-  ClientWidth = 1398
+  ClientHeight = 432
+  ClientWidth = 1368
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,7 +11,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object grp_organization: TGroupBox
@@ -19,7 +18,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Left = 3
     Top = 3
     Width = 225
-    Height = 480
+    Height = 426
     Align = alLeft
     Caption = 'Organizations'
     TabOrder = 0
@@ -131,7 +130,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 397
+      Height = 343
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_organization
@@ -145,10 +144,10 @@ object dtrello_demo_principal: Tdtrello_demo_principal
   end
   object grp_board: TGroupBox
     AlignWithMargins = True
-    Left = 465
+    Left = 234
     Top = 3
     Width = 225
-    Height = 480
+    Height = 426
     Align = alLeft
     Caption = 'Boards'
     TabOrder = 1
@@ -260,7 +259,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 397
+      Height = 343
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_board
@@ -274,10 +273,10 @@ object dtrello_demo_principal: Tdtrello_demo_principal
   end
   object grp_list: TGroupBox
     AlignWithMargins = True
-    Left = 696
+    Left = 465
     Top = 3
     Width = 225
-    Height = 480
+    Height = 426
     Align = alLeft
     Caption = 'Lists'
     TabOrder = 2
@@ -389,7 +388,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 397
+      Height = 343
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_list
@@ -403,10 +402,10 @@ object dtrello_demo_principal: Tdtrello_demo_principal
   end
   object grp_card: TGroupBox
     AlignWithMargins = True
-    Left = 927
+    Left = 696
     Top = 3
     Width = 225
-    Height = 480
+    Height = 426
     Align = alLeft
     Caption = 'Cards'
     TabOrder = 3
@@ -466,7 +465,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Align = alClient
         Caption = 'Active'
         TabOrder = 0
-        OnClick = btn_active_carClick
+        OnClick = btn
       end
       object btn_insert_car: TButton
         AlignWithMargins = True
@@ -518,7 +517,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 397
+      Height = 343
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_card
@@ -530,15 +529,17 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       TitleFont.Style = []
     end
   end
-  object GroupBox1: TGroupBox
+  object grp_members: TGroupBox
     AlignWithMargins = True
-    Left = 1158
+    Left = 927
     Top = 3
     Width = 225
-    Height = 480
+    Height = 426
     Align = alLeft
     Caption = 'Members'
     TabOrder = 4
+    ExplicitLeft = 925
+    ExplicitTop = -2
     object GridPanel4: TGridPanel
       Left = 2
       Top = 15
@@ -595,7 +596,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Align = alClient
         Caption = 'Active'
         TabOrder = 0
-        OnClick = btn_active_carClick
+        OnClick = Button1Click
       end
       object Button2: TButton
         AlignWithMargins = True
@@ -647,7 +648,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 397
+      Height = 343
       Align = alClient
       BorderStyle = bsNone
       DataSource = ds_members
@@ -659,15 +660,17 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       TitleFont.Style = []
     end
   end
-  object GroupBox2: TGroupBox
+  object GroupBox1: TGroupBox
     AlignWithMargins = True
-    Left = 234
+    Left = 1158
     Top = 3
     Width = 225
-    Height = 480
+    Height = 426
     Align = alLeft
-    Caption = 'Members'
+    Caption = 'Actions'
     TabOrder = 5
+    ExplicitLeft = 935
+    ExplicitTop = 6
     object GridPanel5: TGridPanel
       Left = 2
       Top = 15
@@ -724,7 +727,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
         Align = alClient
         Caption = 'Active'
         TabOrder = 0
-        OnClick = btn_active_carClick
+        OnClick = Button5Click
       end
       object Button6: TButton
         AlignWithMargins = True
@@ -776,10 +779,10 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       Left = 2
       Top = 81
       Width = 221
-      Height = 397
+      Height = 343
       Align = alClient
       BorderStyle = bsNone
-      DataSource = ds_members
+      DataSource = ds_actions
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -1044,21 +1047,7 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     Left = 970
     Top = 243
   end
-<<<<<<< HEAD
   object mtb_actions: TFDMemTable
-=======
-  object Actions1: TActions
-    Authenticator = Authenticator1
-    DataSet = FDMemTable1
-    Active = True
-    IdCard = '5cf6d5cfaf5a802220280485'
-    RootElement = '[0].data'
-    OnActive = Actions1Active
-    Left = 1071
-    Top = 315
-  end
-  object FDMemTable1: TFDMemTable
-    Active = True
     FieldDefs = <
       item
         Name = 'old'
@@ -1087,7 +1076,6 @@ object dtrello_demo_principal: Tdtrello_demo_principal
       end>
     IndexDefs = <>
     MasterFields = 'data'
->>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]
@@ -1095,27 +1083,19 @@ object dtrello_demo_principal: Tdtrello_demo_principal
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
-<<<<<<< HEAD
+    StoreDefs = True
     Left = 1186
-    Top = 195
+    Top = 171
   end
   object ds_actions: TDataSource
     DataSet = mtb_actions
-    Left = 1186
-    Top = 275
+    Left = 1194
+    Top = 227
   end
   object Actions1: TActions
-    Left = 1190
-    Top = 339
-=======
-    StoreDefs = True
-    Left = 1058
-    Top = 195
-  end
-  object DataSource1: TDataSource
-    DataSet = FDMemTable1
-    Left = 1066
-    Top = 251
->>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
+    Authenticator = Authenticator1
+    DataSet = mtb_actions
+    Left = 1198
+    Top = 307
   end
 end

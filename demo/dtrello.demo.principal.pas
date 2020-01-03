@@ -9,11 +9,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, dtrello.authenticator, dtrello.cards,
   dtrello.lists, dtrello.boards, dtrello.organizations, dtrello.members,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls,
-<<<<<<< HEAD
-  dtrello.actions;
-=======
-  FireDAC.Stan.StorageBin, dtrello.actions;
->>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
+  dtrello.actions, FireDAC.Stan.StorageBin;
 
 type
   Tdtrello_demo_principal = class(TForm)
@@ -61,15 +57,14 @@ type
     Members1: TMembers;
     mtb_members: TFDMemTable;
     ds_members: TDataSource;
-    GroupBox1: TGroupBox;
+    grp_members: TGroupBox;
     GridPanel4: TGridPanel;
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
     DBGrid1: TDBGrid;
-<<<<<<< HEAD
-    GroupBox2: TGroupBox;
+    GroupBox1: TGroupBox;
     GridPanel5: TGridPanel;
     Button5: TButton;
     Button6: TButton;
@@ -79,11 +74,7 @@ type
     mtb_actions: TFDMemTable;
     ds_actions: TDataSource;
     Actions1: TActions;
-=======
-    Actions1: TActions;
-    FDMemTable1: TFDMemTable;
-    DataSource1: TDataSource;
->>>>>>> 1438e9f664ffdd9be3acaf06daddb2046d059631
+
     procedure btn_active_orgClick(Sender: TObject);
     procedure btn_delete_orgClick(Sender: TObject);
     procedure btn_insert_orgClick(Sender: TObject);
@@ -95,12 +86,13 @@ type
     procedure btn_active_lisClick(Sender: TObject);
     procedure btn_insert_lisClick(Sender: TObject);
     procedure btn_edit_lisClick(Sender: TObject);
-    procedure btn_active_carClick(Sender: TObject);
+    procedure btn(Sender: TObject);
     procedure btn_insert_carClick(Sender: TObject);
     procedure btn_delete_carClick(Sender: TObject);
     procedure btn_edit_carClick(Sender: TObject);
     procedure Actions1Active(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -130,10 +122,13 @@ begin
   Boards1.Active:= True;
 end;
 
-procedure Tdtrello_demo_principal.btn_active_carClick(Sender: TObject);
+procedure Tdtrello_demo_principal.btn(Sender: TObject);
 begin
-  Members1.IdBoard := Boards1.DataSet.FieldByName('id').AsString;
-  Members1.Active  := TRUE;
+  Cards1.IdList := Lists1.DataSet.FieldByName('id').AsString;
+  Cards1.Active := TRUE;
+
+//  Members1.IdBoard := Boards1.DataSet.FieldByName('id').AsString;
+//  Members1.Active  := TRUE;
 end;
 
 procedure Tdtrello_demo_principal.btn_active_lisClick(Sender: TObject);
@@ -252,8 +247,15 @@ begin
     Organizations1.Refresh;
 end;
 
-procedure Tdtrello_demo_principal.FormCreate(Sender: TObject);
+procedure Tdtrello_demo_principal.Button1Click(Sender: TObject);
 begin
+  Members1.IdBoard := Boards1.DataSet.FieldByName('id').AsString;
+  Members1.Active  := TRUE;
+end;
+
+procedure Tdtrello_demo_principal.Button5Click(Sender: TObject);
+begin
+  Actions1.IdCard := Cards1.DataSet.FieldByName('id').AsString;
   Actions1.Active := TRUE;
 end;
 
