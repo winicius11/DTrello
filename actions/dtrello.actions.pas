@@ -152,9 +152,9 @@ begin
     loTask:= TTask.Create(
       procedure ()
       begin
-        TThread.Synchronize(nil,
-        procedure
-        begin
+//        TThread.Synchronize(nil,
+//        procedure
+//        begin
           with Ttrello_Actions.Create(FIdCard, FAuthenticator) do
           begin
             if FDataSet <> nil then
@@ -168,17 +168,17 @@ begin
                 FDataSet.First;
                 FDataSet.EnableControls;
 
-                TThread.Synchronize(nil,
-                procedure
-                begin
+//                TThread.Synchronize(nil,
+//                procedure
+//                begin
                   if Assigned(FOnActive) then
                     FOnActive(Self);
-                end);
+//                end);
               end;
               Free;
             end;
           end;
-        end);
+//        end);
       end
     );
     loTask.Start;
