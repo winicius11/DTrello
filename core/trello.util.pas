@@ -25,6 +25,7 @@ begin
 
   loRESTResponseDataSetAdapter:= TRESTResponseDataSetAdapter.Create(nil);
   try
+    loRESTResponseDataSetAdapter.StringFieldSize := 5000;
     loRESTResponseDataSetAdapter.RootElement := RootElement;
     loRESTResponseDataSetAdapter.Dataset:= Self;
     loRESTResponseDataSetAdapter.Response:= Value;
