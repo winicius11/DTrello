@@ -26,7 +26,9 @@ begin
   loRESTResponseDataSetAdapter:= TRESTResponseDataSetAdapter.Create(nil);
   try
     loRESTResponseDataSetAdapter.StringFieldSize := 5000;
-    loRESTResponseDataSetAdapter.RootElement := RootElement;
+    loRESTResponseDataSetAdapter.RootElement    := RootElement;
+    loRESTResponseDataSetAdapter.NestedElements := true;
+    loRESTResponseDataSetAdapter.NestedElementsDepth := 5;
     loRESTResponseDataSetAdapter.Dataset:= Self;
     loRESTResponseDataSetAdapter.Response:= Value;
     if AOpen then

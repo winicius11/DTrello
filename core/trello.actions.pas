@@ -59,7 +59,7 @@ function Ttrello_actions.Get(const AParams: array of TJSONPair): TRESTResponse;
 begin
   try
     Result:= Request(TRESTRequestMethod.rmGET,
-      Format('%s/cards/%s/%s?fields=all', [TDTrelloContants.BaseUrl, IdCard, EndPoint]), []);
+      Format('%s/cards/%s/%s?fields=all&filter=all', [TDTrelloContants.BaseUrl, IdCard, EndPoint]), []);
   except
     raise;
   end;
