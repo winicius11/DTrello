@@ -152,7 +152,7 @@ begin
     loTask:= TTask.Create(
       procedure ()
       begin
-        TThread.Queue(nil,
+        TThread.Synchronize(nil,
         procedure
         begin
           with Ttrello_Actions.Create(FIdCard, FAuthenticator) do
