@@ -3,7 +3,7 @@ unit trello.core;
 interface
 
 uses
-  {Winapi.Windows, Winapi.Messages, }System.SysUtils, System.Variants,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, System.JSON, REST.Client, IPPeerCommon, IndyPeerImpl,
   dtrello.authenticator, REST.Types;
 
@@ -50,6 +50,7 @@ implementation
 constructor Ttrello_base.Create(const AAuthenticator: TAuthenticator);
 begin
   inherited Create;
+  FAuthenticator := AAuthenticator;
   if FAuthenticator = nil then
     FAuthenticator:= TAuthenticator.Create(nil);
 
@@ -62,8 +63,8 @@ end;
 
 destructor Ttrello_base.Destroy;
 begin
-  if FAuthenticator <> nil then
-    FreeAndNil(FAuthenticator);
+//  if FAuthenticator <> nil then
+//    FreeAndNil(FAuthenticator);
   inherited;
 end;
 
@@ -96,6 +97,16 @@ begin
   except
     raise;
   end;
+
+  var StringList := TStringList.Create;
+  try
+    StringList.Add('URL: ' + AUrl);
+    StringList.Add('Response: ' + Result.Content);
+    StringList.SaveToFile('Logs\' + RandomFrom(['1','2','3','4','5','6','7','8','9','0']) + ' ' + GetTickCount.ToString + '.txt');
+  finally
+    StringList.Free;
+  end;
+
 end;
 
 procedure Ttrello_base.SetAuthenticator(const Value: TAuthenticator);
